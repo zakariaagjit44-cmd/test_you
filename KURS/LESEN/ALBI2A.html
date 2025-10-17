@@ -6,8 +6,6 @@
     <title>Umweltschutz - TELC B2 Training</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- إضافة ملف data.js -->
-    <script src="../data.js" defer></script>
     <style>
         :root {
             --primary: #2196F3;
@@ -197,43 +195,6 @@
             border-bottom: none;
         }
 
-        /* زر العودة للرئيسية */
-        .back-home-btn {
-            position: fixed;
-            top: 20px;
-            left: 80px;
-            z-index: 1000;
-        }
-
-        .home-btn {
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--primary);
-            border-radius: var(--radius);
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            font-weight: 600;
-            color: var(--primary-dark);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-            border: none;
-        }
-
-        .dark-mode .home-btn {
-            background: rgba(13, 71, 161, 0.95);
-            color: var(--light);
-            border: 2px solid var(--secondary);
-        }
-
-        .home-btn:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
         /* شارة المشترك الذهبية - تم التعديل لمطابقة الصفحة الرئيسية */
         .premium-badge {
             position: fixed;
@@ -312,6 +273,8 @@
             background: var(--primary-dark);
             transform: translateY(-2px);
         }
+
+        /* زر الرئيسية - تم إزالته واستبداله بأزرار التحكم */
 
         /* المحتوى الرئيسي */
         .container {
@@ -737,11 +700,6 @@
                 left: 15px;
             }
 
-            .back-home-btn {
-                top: 15px;
-                left: 70px;
-            }
-
             .premium-badge {
                 top: 70px;
                 left: 15px;
@@ -787,11 +745,6 @@
                 font-size: 0.8rem;
                 padding: 0.4rem 0.8rem;
             }
-
-            .home-btn {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
         }
     </style>
 </head>
@@ -814,14 +767,6 @@
         <button class="control-btn support-btn" id="supportBtn">💬</button>
         <button class="control-btn profile-btn" id="profileBtn">👤</button>
         <button class="control-btn notes-btn" id="notesBtn">📝</button>
-    </div>
-
-    <!-- زر العودة للرئيسية - جديد -->
-    <div class="back-home-btn">
-        <button class="home-btn" id="homeBtn">
-            <i class="fas fa-home"></i>
-            <span>الرئيسية</span>
-        </button>
     </div>
 
     <!-- محدد اللغة - تم التعديل لمطابقة الصفحة الرئيسية -->
@@ -933,7 +878,64 @@
     </div>
 
     <script>
-        // باقي الكود الخاص بالأسئلة يبقى كما هو...
+        // الترجمات
+        const translations = {
+            ar: {
+                homeText: "الرئيسية",
+                themeText: "الوضع الليلي",
+                langText: "العربية", 
+                userText: "زائر",
+                pageTitle: "Umweltschutz - TELC B2 Training",
+                pageSubtitle: "تمرين القراءة والفهم - الجزء الأول والثاني والثالث",
+                showAnswersText: "إظهار التصحيح",
+                hideAnswersText: "إخفاء التصحيح",
+                teil1Title: "Lesen Teil 1",
+                teil1Description: "Lesen Sie zuerst die zehn Überschriften. Lesen Sie dann die fünf Texte und entscheiden Sie, welche Überschrift (a-j) am besten zu welchem Text (1–5) passt.",
+                teil2Title: "Lesen Teil 2", 
+                teil3Title: "Lesen Teil 3",
+                teil3Description: "Lesen Sie zuerst die zehn Situationen (11–20) und dann die zwölف Info-Texte (a–l). Welcher Info-Text passt zu welcher Situation?",
+                sprach1Title: "Sprachbausteine Teil 1",
+                sprach2Title: "Sprachbausteine Teil 2",
+                supportTitle: "اتصال الدعم"
+            },
+            de: {
+                homeText: "Startseite",
+                themeText: "Nachtmodus", 
+                langText: "Deutsch",
+                userText: "Besucher",
+                pageTitle: "Umweltschutz - TELC B2 Training",
+                pageSubtitle: "Leseverstehen - Teil 1, 2 und 3",
+                showAnswersText: "Korrektur anzeigen",
+                hideAnswersText: "Korrektur ausblenden",
+                teil1Title: "Lesen Teil 1",
+                teil1Description: "Lesen Sie zuerst die zehn Überschriften. Lesen Sie dann die fünf Texte und entscheiden Sie, welche Überschrift (a-j) am besten zu welchem Text (1–5) passt.",
+                teil2Title: "Lesen Teil 2",
+                teil3Title: "Lesen Teil 3", 
+                teil3Description: "Lesen Sie zuerst die zehn Situationen (11–20) und dann die zwölf Info-Texte (a–l). Welcher Info-Text passt zu welcher Situation?",
+                sprach1Title: "Sprachbausteine Teil 1",
+                sprach2Title: "Sprachbausteine Teil 2",
+                supportTitle: "Support Kontakt"
+            },
+            en: {
+                homeText: "Home",
+                themeText: "Dark Mode",
+                langText: "English",
+                userText: "Visitor", 
+                pageTitle: "Umweltschutz - TELC B2 Training",
+                pageSubtitle: "Reading Comprehension - Part 1, 2 and 3",
+                showAnswersText: "Show Correction",
+                hideAnswersText: "Hide Correction",
+                teil1Title: "Reading Part 1",
+                teil1Description: "First read the ten headings. Then read the five texts and decide which heading (a-j) best matches which text (1-5).",
+                teil2Title: "Reading Part 2",
+                teil3Title: "Reading Part 3",
+                teil3Description: "First read the ten situations (11-20) and then the twelve info texts (a-l). Which info text matches which situation?",
+                sprach1Title: "Language Elements Part 1", 
+                sprach2Title: "Language Elements Part 2",
+                supportTitle: "Support Contact"
+            }
+        };
+
         // بيانات الأسئلة والإجابات من ملف PDF
         const examData = {
             // Lesen Teil 1
@@ -1008,7 +1010,7 @@
                     question: "Wo kann man Second-Hand-Kleidung finden?",
                     options: [
                         "Nur online",
-                        "Nur في großen Städten", 
+                        "Nur in großen Städten", 
                         "In Second-Hand-Läden und online",
                         "Nur auf Flohmärkten"
                     ],
@@ -1034,16 +1036,191 @@
                     ],
                     correct: 1
                 }
-            ]
+            ],
+            
+            // Lesen Teil 3
+            situations: [
+                "Sie haben einen kaputten Toaster und möchten ihn reparieren lassen, ohne viel Geld auszugeben.",
+                "Sie besitzen viele Kleidungsstücke, die Sie nicht mehr tragen, und möchten sie loswerden.",
+                "Sie möchten weniger Kleidung kaufen, wissen aber nicht, wie Sie anfangen sollen.",
+                "Sie interessieren sich für die psychologische Wirkung von Kleidung.",
+                "Sie möchten wissen, wie viel Kleidung Deutsche durchschnittlich besitzen.",
+                "Sie überlegen, ob Sie Ihren kaputten Mixer reparieren oder neu kaufen sollen.",
+                "Sie möchten Ihre Kleidung umweltfreundlicher pflegen.",
+                "Sie suchen nach Möglichkeiten, Ihre Kaufsucht in den Griff zu bekommen.",
+                "Sie möchten Kleidung nachhaltig kaufen und suchen entsprechende Zertifikate.",
+                "Sie handeln online und möchten wissen, wie sich Rücksendungen auf Händler auswirken."
+            ],
+            ads: [
+                {
+                    content: "Repair-Café in Ihrer Stadt: Jeden Samstag von 14-18 Uhr. Ehrenamtliche Helfer unterstützen Sie bei Reparaturen. Kostenlos, Spenden willkommen.",
+                    matches: [0]
+                },
+                {
+                    content: "Kleidertauschparty: Bringen Sie gut erhaltene Kleidung mit und tauschen Sie sie gegen neue Lieblingsteile. Nächster Termin: 15. Mai, Stadtzentrum.",
+                    matches: [1]
+                },
+                {
+                    content: "Online-Kurs 'Weniger konsumieren': Lernen Sie in 4 Wochen Strategien gegen Impulskäufe. Start jeden Monat. Kosten: 49€.",
+                    matches: [2, 7]
+                },
+                {
+                    content: "Buchtipp: 'Die Psychologie der Kleidung' - Wie unser Outfit unsere Wirkung beeinflusst. Jetzt im Buchhandel erhältlich.",
+                    matches: [3]
+                },
+                {
+                    content: "Studie: 'Kleiderkonsum in Deutschland' - Aktuelle Zahlen und Trends. Kostenloser Download auf unserer Website.",
+                    matches: [4]
+                },
+                {
+                    content: "Reparatur vs. Neukauf: Unser Online-Rechner hilft bei der Entscheidung. Einfach Gerätetyp und Defekt eingeben.",
+                    matches: [5]
+                },
+                {
+                    content: "Öko-Waschmittel und Trockenständer: Unsere nachhaltigen Pflegeprodukte schonen Umwelt und Kleidung. Im Bio-Markt erhältlich.",
+                    matches: [6]
+                },
+                {
+                    content: "Selbsthilfegruppe Kaufsucht: Regelmäßige Treffen, anonym, kostenfrei. Erster Schritt zur Veränderung.",
+                    matches: [7]
+                },
+                {
+                    content: "Nachhaltige Mode-Labels mit GOTS-Zertifikat: Übersicht und Bezugsquellen in unserem Einkaufsführer.",
+                    matches: [8]
+                },
+                {
+                    content: "Händler-Umfrage: Wie Online-Shops mit Retouren umgehen. Spannende Einblicke in den E-Commerce.",
+                    matches: [9]
+                }
+            ],
+            
+            // Sprachbausteine Teil 1
+            blankText1: {
+                text: "Die Textilindustrie ___ zu den umweltschädlichsten Branchen weltweit. Bei der Herstellung von Kleidung ___ enorme Mengen an Wasser verbraucht und Chemikalien eingesetzt. Gleichzeitig ___ viele Kleidungsstücke nach kurzer Tragezeit im Müll. Dabei ___ es viele Möglichkeiten, nachhaltiger mit Kleidung umzugehen.",
+                blanks: [
+                    { options: ["gehört", "gehören", "gehörende", "gehörtet"], correct: 0 },
+                    { options: ["werden", "wird", "worden", "würde"], correct: 0 },
+                    { options: ["landen", "landet", "gelandet", "landend"], correct: 0 },
+                    { options: ["gibt", "geben", "gegeben", "gäbe"], correct: 0 }
+                ]
+            },
+            
+            // Sprachbausteine Teil 2
+            blankText2: {
+                text: "Second-Hand-Kleidung ___ eine umweltfreundliche Alternative. In vielen Städten ___ es inzwischen gut sortierte Second-Hand-Läden, in ___ man qualitativ hochwertige Kleidung findet. Auch online ___ man gebrauchte Kleidung kaufen und verkaufen.",
+                blanks: [
+                    { options: ["ist", "sind", "war", "wäre"], correct: 0 },
+                    { options: ["gibt", "geben", "gegeben", "gäbe"], correct: 0 },
+                    { options: ["denen", "der", "die", "das"], correct: 0 },
+                    { options: ["kann", "können", "konnte", "könnte"], correct: 0 }
+                ]
+            }
         };
 
-        // تهيئة المحتوى
         document.addEventListener('DOMContentLoaded', function() {
-            // عرض/إخفاء الإجابات
-            let answersVisible = false;
-
+            // العناصر
+            const themeToggle = document.getElementById('themeToggle');
+            const supportBtn = document.getElementById('supportBtn');
+            const profileBtn = document.getElementById('profileBtn');
+            const notesBtn = document.getElementById('notesBtn');
+            const langBtn = document.getElementById('langBtn');
+            const langDropdown = document.getElementById('langDropdown');
+            const supportModal = document.getElementById('supportModal');
+            const closeSupportModal = document.getElementById('closeSupportModal');
+            const premiumBadge = document.getElementById('premiumBadge');
             const showAnswersBtn = document.getElementById('showAnswers');
             const hideAnswersBtn = document.getElementById('hideAnswers');
+
+            // تحميل الإعدادات
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            const savedLanguage = localStorage.getItem('language') || 'ar';
+
+            // تطبيق الإعدادات
+            if (savedDarkMode) {
+                document.body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️';
+            }
+
+            // تغيير اللغة
+            function changeLanguage(lang) {
+                localStorage.setItem('language', lang);
+                const langTexts = {
+                    ar: '🇸🇦 العربية',
+                    de: '🇩🇪 Deutsch', 
+                    en: '🇬🇧 English'
+                };
+                langBtn.innerHTML = `<span>${langTexts[lang]}</span>`;
+                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = lang;
+                
+                // تحديث النصوص
+                Object.keys(translations[lang]).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        element.textContent = translations[lang][key];
+                    }
+                });
+            }
+
+            // تطبيق اللغة المحفوظة
+            changeLanguage(savedLanguage);
+
+            // مستمعي الأحداث للأزرار العلوية
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                themeToggle.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+                localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+            });
+
+            supportBtn.addEventListener('click', function() {
+                supportModal.style.display = 'flex';
+            });
+
+            profileBtn.addEventListener('click', function() {
+                window.location.href = 'index.html#profile';
+            });
+
+            notesBtn.addEventListener('click', function() {
+                window.location.href = 'index.html#notes';
+            });
+
+            closeSupportModal.addEventListener('click', function() {
+                supportModal.style.display = 'none';
+            });
+
+            supportModal.addEventListener('click', function(e) {
+                if (e.target === supportModal) {
+                    supportModal.style.display = 'none';
+                }
+            });
+
+            // محدد اللغة
+            langBtn.addEventListener('click', function() {
+                langDropdown.classList.toggle('show');
+            });
+
+            document.querySelectorAll('.lang-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                    langDropdown.classList.remove('show');
+                });
+            });
+
+            // إغلاق القوائم المنسدلة بالنقر خارجها
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.language-selector')) {
+                    langDropdown.classList.remove('show');
+                }
+            });
+
+            // زر البريميوم
+            premiumBadge.addEventListener('click', function() {
+                alert('أنت مشترك! شكراً على دعمك 💎');
+            });
+
+            // عرض/إخفاء الإجابات
+            let answersVisible = false;
 
             showAnswersBtn.addEventListener('click', function() {
                 showAllAnswers();
@@ -1114,6 +1291,65 @@
                     `;
                     questionsList.appendChild(questionElement);
                 });
+
+                // Lesen Teil 3
+                const situationsList = document.getElementById('situationsList');
+                const adsList = document.getElementById('adsList');
+
+                examData.situations.forEach((situation, index) => {
+                    const situationElement = document.createElement('div');
+                    situationElement.className = 'situation-item';
+                    situationElement.innerHTML = `
+                        <strong>Situation ${index + 11}:</strong> ${situation}
+                        <div class="answer correct-answer hidden" id="answerTeil3Situation${index + 11}">
+                            ${getCorrectAdsForSituation(index)}
+                        </div>
+                    `;
+                    situationsList.appendChild(situationElement);
+                });
+
+                examData.ads.forEach((ad, index) => {
+                    const adElement = document.createElement('div');
+                    adElement.className = 'ad-item';
+                    adElement.innerHTML = `
+                        <strong>Text ${String.fromCharCode(97 + index)}:</strong> ${ad.content}
+                    `;
+                    adsList.appendChild(adElement);
+                });
+
+                // Sprachbausteine Teil 1
+                const blankText1Element = document.getElementById('blankText1');
+                blankText1Element.innerHTML = generateBlankText(examData.blankText1, 'sprach1');
+
+                // Sprachbausteine Teil 2
+                const blankText2Element = document.getElementById('blankText2');
+                blankText2Element.innerHTML = generateBlankText(examData.blankText2, 'sprach2');
+            }
+
+            function generateBlankText(blankData, prefix) {
+                const parts = blankData.text.split(/(___)/);
+                let blankIndex = 0;
+                
+                return parts.map(part => {
+                    if (part === '___') {
+                        const blank = blankData.blanks[blankIndex];
+                        blankIndex++;
+                        return `
+                            <span class="blank" id="${prefix}Blank${blankIndex}">
+                                ${blank.options[blank.correct]}
+                            </span>
+                        `;
+                    }
+                    return part;
+                }).join('');
+            }
+
+            function getCorrectAdsForSituation(situationIndex) {
+                const matchingAds = examData.ads.filter(ad => ad.matches.includes(situationIndex));
+                return matchingAds.map(ad => {
+                    const adIndex = examData.ads.indexOf(ad);
+                    return `Text ${String.fromCharCode(97 + adIndex)}`;
+                }).join(', ');
             }
 
             function showAllAnswers() {

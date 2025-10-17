@@ -2187,6 +2187,8 @@
             let isGuest = false;
             let examDate = new Date();
             examDate.setMonth(examDate.getMonth() + 1); // افتراضي: بعد شهر من الآن
+            let userPermissions = null;
+            let isAdmin = false;
             
             // تحميل وقت انتهاء التجربة من localStorage
             const savedTrialExpiry = localStorage.getItem('trialExpiry');
@@ -2226,7 +2228,14 @@
                     currentUser = data.user;
                     
                     showToast('تم تسجيل الدخول بنجاح!', 'success');
-                    showPage('menu');
+                    
+                    // التحقق من صلاحية المستخدم
+                    const hasAccess = await checkUserAccess();
+                    if (!hasAccess) {
+                        // إذا لم يكن لديه صلاحية، يبقى في صفحة الانتظار
+                        showPage('waiting');
+                    }
+                    
                     updateUIForLoggedInUser();
                     
                 } catch (error) {
@@ -2262,8 +2271,13 @@
 
                     if (error) throw error;
 
-                    showToast('تم إنشاء الحساب بنجاح! يرجى انتظار موافقة المسؤول', 'success');
+                    // التغيير: لا ندخل مباشرة، نذهب لصفحة الانتظار
+                    showToast('تم إنشاء الحساب بنجاح! جاري انتظار موافقة المسؤول', 'success');
                     showPage('waiting');
+                    
+                    // لا نقوم بتسجيل الدخول تلقائياً
+                    emailInput.value = '';
+                    passwordInput.value = '';
                     
                 } catch (error) {
                     showToast('خطأ في إنشاء الحساب: ' + error.message, 'error');
@@ -2277,6 +2291,8 @@
                     
                     currentUser = null;
                     isGuest = false;
+                    userPermissions = null;
+                    isAdmin = false;
                     updateUIForLoggedOutUser();
                     showPage('login');
                     
@@ -2303,10 +2319,101 @@
                 showPage('menu');
             }
 
+            // وظيفة التحقق من صلاحية المستخدم
+            async function checkUserAccess() {
+                if (!currentUser) return false;
+                
+                try {
+                    const { data, error } = await supabase
+                        .from('user_permissions')
+                        .select('can_access, is_admin, subscription_type, subscription_expiry')
+                        .eq('user_id', currentUser.id)
+                        .single();
+
+                    // إذا لم يكن للمستخدم صلاحية أو لم يتم العثور على بياناته
+                    if (error || !data || !data.can_access) {
+                        showPage('waiting');
+                        return false;
+                    }
+
+                    userPermissions = data;
+                    isAdmin = data.is_admin;
+
+                    if (isAdmin) {
+                        // إذا كان مسؤولاً، نحمي بيانات المسؤول
+                        await loadAdminData();
+                        showPage('menu'); // يمكن تغيير هذا لصفحة المسؤول إذا أردت
+                    } else {
+                        showPage('menu');
+                        await loadUserProfile();
+                    }
+
+                    updateUIBySubscription(data.subscription_type, data.subscription_expiry);
+                    return true;
+
+                } catch (error) {
+                    console.error('Error checking user access:', error);
+                    showPage('waiting');
+                    return false;
+                }
+            }
+
+            async function loadUserProfile() {
+                // تحميل بيانات المستخدم
+                try {
+                    const { data, error } = await supabase
+                        .from('profiles')
+                        .select('*')
+                        .eq('id', currentUser.id)
+                        .single();
+                    
+                    if (!error && data) {
+                        // تحديث واجهة المستخدم ببياناته
+                        document.getElementById('userName').textContent = data.full_name || currentUser.email.split('@')[0];
+                        document.getElementById('profileName').textContent = data.full_name || currentUser.email.split('@')[0];
+                        document.getElementById('userAvatar').textContent = (data.full_name || currentUser.email.split('@')[0]).charAt(0);
+                        document.getElementById('profileEmail').textContent = currentUser.email;
+                    }
+                } catch (error) {
+                    console.error('Error loading user profile:', error);
+                }
+            }
+
+            async function loadAdminData() {
+                try {
+                    // تحميل طلبات التسجيل المعلقة
+                    const { data: requests, error: requestsError } = await supabase
+                        .from('registration_requests')
+                        .select('*')
+                        .eq('status', 'pending')
+                        .order('requested_at', { ascending: true });
+                    
+                    if (!requestsError && requests) {
+                        // عرض الطلبات في لوحة المسؤول
+                        console.log('طلبات الانتظار:', requests);
+                        // يمكنك إضافة كود لعرض هذه الطلبات في واجهة المسؤول
+                    }
+                    
+                } catch (error) {
+                    console.error('Error loading admin data:', error);
+                }
+            }
+
+            function updateUIBySubscription(subscriptionType, subscriptionExpiry) {
+                // تحديث واجهة المستخدم حسب نوع الاشتراك
+                if (subscriptionType === 'premium') {
+                    premiumBadge.style.display = 'flex';
+                    trialBanner.style.display = 'none';
+                } else {
+                    premiumBadge.style.display = 'none';
+                    if (subscriptionExpiry && new Date(subscriptionExpiry) > new Date()) {
+                        trialBanner.style.display = 'block';
+                    }
+                }
+            }
+
             function updateUIForLoggedInUser() {
                 profileBtn.style.display = 'flex';
-                premiumBadge.style.display = 'flex';
-                trialBanner.style.display = 'none';
             }
 
             function updateUIForLoggedOutUser() {
@@ -2662,6 +2769,31 @@
                 return `${year}-${month}-${day}`;
             }
 
+            // التحقق من حالة تسجيل الدخول المحفوظة
+            async function checkLoginStatus() {
+                try {
+                    const { data, error } = await supabase.auth.getSession();
+                    if (error) throw error;
+                    
+                    if (data.session) {
+                        currentUser = data.session.user;
+                        // هنا التغيير: نتحقق من الصلاحية أولاً
+                        const hasAccess = await checkUserAccess();
+                        if (!hasAccess) {
+                            // إذا لم يكن لديه صلاحية، يبقى في صفحة الانتظار
+                            showPage('waiting');
+                        }
+                        return;
+                    }
+                    
+                    // إذا لم يكن هناك جلسة، عرض صفحة تسجيل الدخول
+                    showPage('login');
+                } catch (error) {
+                    console.error('Error checking auth status:', error);
+                    showPage('login');
+                }
+            }
+
             // إعداد مستمعي الأحداث
             function setupEventListeners() {
                 // تسجيل الدخول والتسجيل
@@ -2783,23 +2915,6 @@
                         handleLogin();
                     }
                 });
-            }
-
-            // التحقق من حالة تسجيل الدخول المحفوظة
-            async function checkLoginStatus() {
-                try {
-                    const { data, error } = await supabase.auth.getSession();
-                    if (error) throw error;
-                    
-                    if (data.session) {
-                        currentUser = data.session.user;
-                        showPage('menu');
-                        updateUIForLoggedInUser();
-                        return;
-                    }
-                } catch (error) {
-                    console.error('Error checking auth status:', error);
-                }
             }
 
             // بدء التطبيق
