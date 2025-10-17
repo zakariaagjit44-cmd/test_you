@@ -47,7 +47,6 @@
             color: var(--light);
         }
 
-        /* Floating Elements */
         .floating-elements {
             position: fixed;
             width: 100%;
@@ -78,7 +77,6 @@
             66% { transform: translateY(-15px) rotate(-3deg) scale(0.95); }
         }
 
-        /* Header Controls */
         .header-controls {
             position: fixed;
             top: 20px;
@@ -106,30 +104,11 @@
             transition: var(--transition);
         }
 
-        .control-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .control-btn:hover::before {
-            width: 100%;
-            height: 100%;
-        }
-
         .control-btn:hover {
             transform: scale(1.15) rotate(5deg);
             box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
         }
 
-        /* Language Selector */
         .language-selector {
             position: fixed;
             top: 20px;
@@ -176,17 +155,11 @@
             display: none;
             overflow: hidden;
             min-width: 120px;
-            animation: dropdownSlide 0.3s ease;
         }
 
         .dark-mode .lang-dropdown {
             background: #1a237e;
             color: var(--light);
-        }
-
-        @keyframes dropdownSlide {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .lang-dropdown.show {
@@ -201,11 +174,9 @@
             align-items: center;
             gap: 0.5rem;
             transition: var(--transition);
-            color: var(--text);
         }
 
         .dark-mode .lang-option {
-            color: var(--light);
             border-bottom: 1px solid #37474F;
         }
 
@@ -218,11 +189,6 @@
             background: #283593;
         }
 
-        .lang-option:last-child {
-            border-bottom: none;
-        }
-
-        /* Trial Countdown Banner */
         .trial-banner {
             position: fixed;
             top: 0;
@@ -234,17 +200,7 @@
             text-align: center;
             z-index: 999;
             box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
-            animation: slideDown 0.5s ease;
             display: none;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-
-        .trial-banner.expired {
-            background: linear-gradient(135deg, var(--danger) 0%, #d32f2f 100%);
         }
 
         .trial-banner-content {
@@ -269,7 +225,6 @@
             border-radius: 20px;
         }
 
-        /* Premium Crown Badge */
         .premium-badge {
             position: fixed;
             top: 85px;
@@ -293,7 +248,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Subscription Activation Box */
         .subscription-activation {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
             color: var(--white);
@@ -315,8 +269,7 @@
             box-shadow: 0 6px 15px rgba(66, 165, 245, 0.4);
         }
 
-        /* Phone Modal */
-        .phone-modal {
+        .phone-modal, .support-modal, .edit-modal {
             display: none;
             position: fixed;
             top: 0;
@@ -329,7 +282,7 @@
             justify-content: center;
         }
 
-        .phone-modal-content {
+        .phone-modal-content, .support-modal-content, .edit-modal-content {
             background: var(--white);
             padding: 2rem;
             border-radius: var(--radius);
@@ -340,7 +293,9 @@
             animation: modalAppear 0.3s ease;
         }
 
-        .dark-mode .phone-modal-content {
+        .dark-mode .phone-modal-content, 
+        .dark-mode .support-modal-content, 
+        .dark-mode .edit-modal-content {
             background: #1a237e;
             color: var(--light);
         }
@@ -378,36 +333,6 @@
             transform: translateY(-2px);
         }
 
-        /* Support Modal */
-        .support-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .support-modal-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            width: 90%;
-            animation: modalAppear 0.3s ease;
-        }
-
-        .dark-mode .support-modal-content {
-            background: #1a237e;
-            color: var(--light);
-        }
-
         .support-info {
             margin: 1.5rem 0;
             padding: 1rem;
@@ -420,7 +345,6 @@
             font-size: 1.1rem;
         }
 
-        /* Login Page */
         .login-container {
             min-height: 100vh;
             display: flex;
@@ -461,12 +385,6 @@
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: titleGlow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes titleGlow {
-            from { filter: drop-shadow(0 0 5px rgba(33, 150, 243, 0.5)); }
-            to { filter: drop-shadow(0 0 15px rgba(33, 150, 243, 0.8)); }
         }
 
         .login-subtitle {
@@ -504,21 +422,6 @@
             gap: 0.8rem;
             transition: var(--transition);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .auth-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            transition: right 0.6s;
-        }
-
-        .auth-btn:hover::before {
-            right: 100%;
         }
 
         .auth-btn:hover {
@@ -572,8 +475,7 @@
             border: 2px solid var(--secondary);
         }
 
-        /* Menu Page */
-        .menu-container {
+        .menu-container, .exams-container, .profile-container, .waiting-container {
             min-height: 100vh;
             padding: 2rem;
             position: relative;
@@ -620,7 +522,7 @@
             margin: 3rem auto 0;
         }
 
-        .menu-card {
+        .menu-card, .exam-card, .kurs-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: var(--radius);
             padding: 3rem 2rem;
@@ -637,9 +539,6 @@
             transition: var(--transition);
         }
 
-        .menu-card:nth-child(1) { animation-delay: 0.2s; }
-        .menu-card:nth-child(2) { animation-delay: 0.4s; }
-
         @keyframes cardSlideUp {
             to {
                 transform: translateY(0);
@@ -647,29 +546,14 @@
             }
         }
 
-        .menu-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.4s ease;
-        }
-
-        .menu-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .dark-mode .menu-card {
+        .dark-mode .menu-card, 
+        .dark-mode .exam-card, 
+        .dark-mode .kurs-card {
             background: rgba(13, 71, 161, 0.95);
             border: 1px solid rgba(227, 242, 253, 0.2);
         }
 
-        .menu-card:hover {
+        .menu-card:hover, .exam-card:hover, .kurs-card:hover {
             transform: translateY(-15px) scale(1.05);
             box-shadow: var(--shadow-hover);
         }
@@ -706,7 +590,7 @@
             color: var(--light);
         }
 
-        .back-btn {
+        .back-btn, .back-to-kurs {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
             border: none;
@@ -724,34 +608,12 @@
             transition: var(--transition);
         }
 
-        .back-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .back-btn:hover::before {
-            left: 100%;
-        }
-
-        .back-btn:hover {
+        .back-btn:hover, .back-to-kurs:hover {
             transform: translateX(-8px) scale(1.05);
             box-shadow: 0 12px 30px rgba(33, 150, 243, 0.4);
         }
 
-        /* Exams Page */
-        .exams-container {
-            min-height: 100vh;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .exams-grid {
+        .exams-grid, .kurs-submenu {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
@@ -759,229 +621,12 @@
             margin: 3rem auto 0;
         }
 
-        .exam-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            border: 1px solid rgba(33, 150, 243, 0.2);
-            backdrop-filter: blur(15px);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: cardSlideUp 0.6s ease forwards;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .exam-card:nth-child(odd) { animation-delay: 0.1s; }
-        .exam-card:nth-child(even) { animation-delay: 0.2s; }
-
-        .dark-mode .exam-card {
-            background: rgba(13, 71, 161, 0.95);
-            border: 1px solid rgba(227, 242, 253, 0.2);
-        }
-
-        .exam-card:hover {
-            transform: translateY(-12px) scale(1.08);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .exam-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .exam-card:hover::after {
-            opacity: 1;
-        }
-
-        .exam-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
-            font-size: 1.4rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 2;
-        }
-
-        .dark-mode .exam-card h3 {
-            color: #90CAF9;
-        }
-
-        .exam-card p {
-            color: var(--text-light);
-            position: relative;
-            z-index: 2;
-        }
-
-        .dark-mode .exam-card p {
-            color: var(--light);
-        }
-
-        /* KURS Submenu */
         .kurs-submenu {
             display: none;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 3rem auto 0;
         }
 
         .kurs-submenu.active {
             display: grid;
-        }
-
-        .kurs-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            border: 1px solid rgba(33, 150, 243, 0.2);
-            backdrop-filter: blur(15px);
-            transform: translateY(30px);
-            opacity: 0;
-            animation: cardSlideUp 0.6s ease forwards;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .kurs-card:nth-child(1) { animation-delay: 0.1s; }
-        .kurs-card:nth-child(2) { animation-delay: 0.2s; }
-        .kurs-card:nth-child(3) { animation-delay: 0.3s; }
-        .kurs-card:nth-child(4) { animation-delay: 0.4s; }
-
-        .dark-mode .kurs-card {
-            background: rgba(13, 71, 161, 0.95);
-            border: 1px solid rgba(227, 242, 253, 0.2);
-        }
-
-        .kurs-card:hover {
-            transform: translateY(-12px) scale(1.08);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .kurs-card h3 {
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
-            font-size: 1.4rem;
-            font-weight: 600;
-            position: relative;
-            z-index: 2;
-        }
-
-        .dark-mode .kurs-card h3 {
-            color: #90CAF9;
-        }
-
-        .kurs-card p {
-            color: var(--text-light);
-            position: relative;
-            z-index: 2;
-        }
-
-        .dark-mode .kurs-card p {
-            color: var(--light);
-        }
-
-        /* Back Button for KURS */
-        .back-to-kurs {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
-            color: var(--white);
-            border: none;
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 2rem auto;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            box-shadow: var(--shadow);
-            font-weight: 600;
-            position: relative;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .back-to-kurs::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
-        }
-
-        .back-to-kurs:hover::before {
-            left: 100%;
-        }
-
-        .back-to-kurs:hover {
-            transform: translateX(-8px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(66, 165, 245, 0.4);
-        }
-
-        /* Support Modal */
-        .support-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .support-modal-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            max-width: 400px;
-            width: 90%;
-            animation: modalAppear 0.3s ease;
-        }
-
-        .dark-mode .support-modal-content {
-            background: #1a237e;
-            color: var(--light);
-        }
-
-        .support-info {
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background: rgba(33, 150, 243, 0.1);
-            border-radius: 15px;
-        }
-
-        .support-item {
-            margin: 1rem 0;
-            font-size: 1.1rem;
-        }
-
-        /* Profile Page */
-        .profile-container {
-            min-height: 100vh;
-            padding: 2rem;
-            position: relative;
         }
 
         .profile-card {
@@ -1008,12 +653,6 @@
             margin-bottom: 2.5rem;
         }
 
-        .profile-avatar-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-
         .profile-avatar {
             width: 140px;
             height: 140px;
@@ -1027,40 +666,7 @@
             font-weight: bold;
             box-shadow: 0 12px 30px rgba(33, 150, 243, 0.4);
             border: 4px solid var(--white);
-            animation: avatarPulse 3s ease-in-out infinite;
-            background-size: cover;
-            background-position: center;
-        }
-
-        @keyframes avatarPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
-
-        .image-upload-container {
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .image-upload-label {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
-            transition: var(--transition);
-        }
-
-        .image-upload-label:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(33, 150, 243, 0.4);
-        }
-
-        .image-upload-input {
-            display: none;
+            margin: 0 auto 1.5rem;
         }
 
         .profile-info-grid {
@@ -1075,7 +681,6 @@
             border-radius: 15px;
             padding: 1.5rem;
             border: 1px solid rgba(33, 150, 243, 0.2);
-            backdrop-filter: blur(5px);
         }
 
         .info-section h3 {
@@ -1108,33 +713,12 @@
             text-align: center;
             margin-bottom: 2rem;
             box-shadow: 0 12px 30px rgba(33, 150, 243, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .countdown-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            animation: shine 4s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .countdown-section h3 {
             color: var(--white);
             margin-bottom: 1rem;
             font-size: 1.4rem;
-            position: relative;
-            z-index: 2;
         }
 
         .countdown-timer {
@@ -1142,8 +726,6 @@
             font-size: 2rem;
             font-weight: bold;
             color: var(--white);
-            position: relative;
-            z-index: 2;
         }
 
         .profile-actions {
@@ -1186,36 +768,6 @@
             color: var(--white);
         }
 
-        /* Edit Profile Modal */
-        .edit-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .edit-modal-content {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: var(--radius);
-            text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 90%;
-            animation: modalAppear 0.3s ease;
-        }
-
-        .dark-mode .edit-modal-content {
-            background: #1a237e;
-            color: var(--light);
-        }
-
         .edit-form {
             display: flex;
             flex-direction: column;
@@ -1253,16 +805,6 @@
             background: rgba(255, 255, 255, 0.1);
             color: var(--light);
             border: 2px solid var(--secondary);
-        }
-
-        /* Waiting Approval Page */
-        .waiting-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            position: relative;
         }
 
         .waiting-content {
@@ -1314,7 +856,6 @@
             color: #B0BEC5;
         }
 
-        /* Toast Notifications */
         .toast-container {
             position: fixed;
             top: 20px;
@@ -1359,74 +900,49 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             .login-content, .waiting-content, .profile-card, .edit-modal-content {
                 padding: 2rem 1.5rem;
             }
-
             .header h1 {
                 font-size: 2.2rem;
             }
-
             .page-subtitle {
                 font-size: 1.1rem;
             }
-
             .menu-grid, .exams-grid, .kurs-submenu {
                 grid-template-columns: 1fr;
             }
-
             .menu-card, .exam-card, .kurs-card {
                 padding: 2rem 1.5rem;
             }
-
             .profile-info-grid {
                 grid-template-columns: 1fr;
             }
-
             .profile-actions {
                 flex-direction: column;
                 align-items: center;
             }
-
             .profile-action-btn {
                 width: 100%;
                 max-width: 250px;
                 justify-content: center;
             }
-
             .header-controls {
                 top: 10px;
                 right: 10px;
             }
-
             .language-selector {
                 top: 10px;
                 left: 10px;
             }
-
             .control-btn {
                 width: 45px;
                 height: 45px;
                 font-size: 1.1rem;
             }
-
-            .trial-banner-content {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .trial-text {
-                font-size: 0.9rem;
-            }
-
-            .trial-timer {
-                font-size: 1rem;
-            }
         }
 
-        /* Page Management */
         .page {
             display: none;
         }
@@ -1693,7 +1209,7 @@
             </div>
             
             <div class="exams-grid" id="lesenGrid">
-                <!-- Lesen exams will be dynamically added here -->
+                <!-- سيتم إضافة الامتحانات ديناميكياً -->
             </div>
         </div>
     </div>
@@ -1711,7 +1227,7 @@
             </div>
             
             <div class="exams-grid" id="hoerenGrid">
-                <!-- Hören exams will be dynamically added here -->
+                <!-- سيتم إضافة الامتحانات ديناميكياً -->
             </div>
         </div>
     </div>
@@ -1729,7 +1245,7 @@
             </div>
             
             <div class="exams-grid" id="schreibenGrid">
-                <!-- Schreiben exams will be dynamically added here -->
+                <!-- سيتم إضافة الامتحانات ديناميكياً -->
             </div>
         </div>
     </div>
@@ -1747,7 +1263,7 @@
             </div>
             
             <div class="exams-grid" id="pdfsGrid">
-                <!-- PDFs will be dynamically added here -->
+                <!-- سيتم إضافة PDFs ديناميكياً -->
             </div>
         </div>
     </div>
@@ -1765,7 +1281,7 @@
             </div>
             
             <div class="exams-grid" id="examsGrid">
-                <!-- Exams will be dynamically added here -->
+                <!-- سيتم إضافة الامتحانات ديناميكياً -->
             </div>
         </div>
     </div>
@@ -1784,18 +1300,9 @@
             
             <div class="profile-card">
                 <div class="profile-header">
-                    <div class="profile-avatar-container">
-                        <div class="profile-avatar" id="userAvatar">ز</div>
-                    </div>
+                    <div class="profile-avatar" id="userAvatar">ز</div>
                     <h2 id="userName">زكرياء</h2>
                     <p id="userLevel">طالب مستوى B2</p>
-                </div>
-
-                <div class="image-upload-container">
-                    <label for="imageUpload" class="image-upload-label">
-                        <i class="fas fa-camera"></i> اختيار صورة
-                    </label>
-                    <input type="file" id="imageUpload" class="image-upload-input" accept="image/*">
                 </div>
                 
                 <div class="profile-info-grid">
@@ -1897,9 +1404,9 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <script type="module">
-        // تكوين Supabase
-        const SUPABASE_URL = 'https://ynblwwuniodhflurtyhh.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InluYmx3d3VuaW9kaGZsdXJ0eWhoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NTQyNzQsImV4cCI6MjA3NjAzMDI3NH0.N-K56GxR-lYGSW_SLdEXo8QyGIbvi0XwZkzmBzVF_Dk';
+        // تكوين Supabase مع المفاتيح الجديدة
+        const SUPABASE_URL = 'https://gxliuuhgssesdrbwgdui.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4bGl1dWhnc3Nlc2RyYndnZHVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NTQyNTIsImV4cCI6MjA3NjAzMDI1Mn0.gPVliO_yB__XqGBdWHCpr1FdbOtKuQ-1XDA-JoclZNU';
         
         // تهيئة Supabase
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -2080,7 +1587,7 @@
                 localStorage.setItem('examDate', examDate.toISOString());
             }
 
-            // وظائف المصادقة - الإصدار المصحح
+            // وظائف المصادقة - الإصدار الجديد المبسط
             async function handleLogin() {
                 const email = emailInput.value.trim();
                 const password = passwordInput.value;
@@ -2137,7 +1644,9 @@
                         options: {
                             data: {
                                 full_name: email.split('@')[0]
-                            }
+                            },
+                            // إلغاء تأكيد البريد الإلكتروني
+                            emailRedirectTo: window.location.origin
                         }
                     });
 
@@ -2188,15 +1697,14 @@
                 showPage('menu');
             }
 
-            // وظيفة التحقق من صلاحية المستخدم - الإصدار المصحح
+            // وظيفة التحقق من صلاحية المستخدم - مبسطة
             async function checkUserAccess() {
                 if (!currentUser) return false;
                 
                 try {
-                    // التحقق مباشرة من جدول user_permissions
                     const { data, error } = await supabase
                         .from('user_permissions')
-                        .select('can_access, is_admin')
+                        .select('can_access')
                         .eq('user_id', currentUser.id)
                         .single();
 
@@ -2206,13 +1714,7 @@
                         return false;
                     }
 
-                    // إذا كانت can_access = true، يسمح بالدخول
-                    if (data && data.can_access) {
-                        return true;
-                    }
-
-                    // إذا كانت can_access = false، يبقى في صفحة الانتظار
-                    return false;
+                    return data.can_access;
 
                 } catch (error) {
                     console.error('Error checking user access:', error);
@@ -2222,7 +1724,6 @@
 
             function updateUIForLoggedInUser() {
                 profileBtn.style.display = 'flex';
-                // إخفاء البانر التجريبي للمستخدمين المسجلين
                 trialBanner.style.display = 'none';
             }
 
@@ -2345,7 +1846,7 @@
                 }, 5000);
             }
 
-            // التحقق من حالة تسجيل الدخول المحفوظة - الإصدار المصحح
+            // التحقق من حالة تسجيل الدخول المحفوظة
             async function checkLoginStatus() {
                 try {
                     const { data, error } = await supabase.auth.getSession();
@@ -2354,7 +1855,6 @@
                     if (data.session) {
                         currentUser = data.session.user;
                         
-                        // التحقق من الصلاحية مباشرة
                         const hasAccess = await checkUserAccess();
                         if (hasAccess) {
                             showPage('menu');
@@ -2365,7 +1865,6 @@
                         return;
                     }
                     
-                    // إذا لم يكن هناك جلسة، عرض صفحة تسجيل الدخول
                     showPage('login');
                 } catch (error) {
                     console.error('Error checking auth status:', error);
