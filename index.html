@@ -106,7 +106,6 @@
 
         .control-btn:hover {
             transform: scale(1.15) rotate(5deg);
-            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
         }
 
         .language-selector {
@@ -132,12 +131,6 @@
             transition: var(--transition);
         }
 
-        .dark-mode .lang-btn {
-            background: rgba(13, 71, 161, 0.95);
-            color: var(--light);
-            border: 2px solid var(--secondary);
-        }
-
         .lang-btn:hover {
             background: var(--primary);
             color: var(--white);
@@ -157,11 +150,6 @@
             min-width: 120px;
         }
 
-        .dark-mode .lang-dropdown {
-            background: #1a237e;
-            color: var(--light);
-        }
-
         .lang-dropdown.show {
             display: block;
         }
@@ -176,17 +164,9 @@
             transition: var(--transition);
         }
 
-        .dark-mode .lang-option {
-            border-bottom: 1px solid #37474F;
-        }
-
         .lang-option:hover {
             background: #f5f5f5;
             transform: translateX(5px);
-        }
-
-        .dark-mode .lang-option:hover {
-            background: #283593;
         }
 
         .trial-banner {
@@ -201,28 +181,6 @@
             z-index: 999;
             box-shadow: 0 4px 15px rgba(66, 165, 245, 0.3);
             display: none;
-        }
-
-        .trial-banner-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .trial-text {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .trial-timer {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 1.1rem;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
         }
 
         .premium-badge {
@@ -266,7 +224,6 @@
 
         .subscription-activation:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(66, 165, 245, 0.4);
         }
 
         .phone-modal, .support-modal, .edit-modal {
@@ -293,28 +250,9 @@
             animation: modalAppear 0.3s ease;
         }
 
-        .dark-mode .phone-modal-content, 
-        .dark-mode .support-modal-content, 
-        .dark-mode .edit-modal-content {
-            background: #1a237e;
-            color: var(--light);
-        }
-
         @keyframes modalAppear {
             from { opacity: 0; transform: scale(0.8); }
             to { opacity: 1; transform: scale(1); }
-        }
-
-        .phone-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 1.5rem 0;
-            color: var(--primary-dark);
-            direction: ltr;
-        }
-
-        .dark-mode .phone-number {
-            color: #90CAF9;
         }
 
         .close-modal {
@@ -331,18 +269,6 @@
         .close-modal:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-        }
-
-        .support-info {
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background: rgba(33, 150, 243, 0.1);
-            border-radius: 15px;
-        }
-
-        .support-item {
-            margin: 1rem 0;
-            font-size: 1.1rem;
         }
 
         .login-container {
@@ -373,11 +299,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .dark-mode .login-content {
-            background: rgba(13, 71, 161, 0.95);
-            border: 1px solid rgba(227, 242, 253, 0.2);
-        }
-
         .login-content h1 {
             font-size: 2.8rem;
             margin-bottom: 0.5rem;
@@ -385,18 +306,6 @@
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-
-        .login-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.6;
-        }
-
-        .dark-mode .login-subtitle {
-            color: #B0BEC5;
         }
 
         .auth-buttons {
@@ -413,8 +322,6 @@
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
             border: none;
             display: flex;
             align-items: center;
@@ -426,7 +333,6 @@
 
         .auth-btn:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         .login-btn {
@@ -466,16 +372,21 @@
             outline: none;
             border-color: var(--primary-dark);
             box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
-            transform: scale(1.02);
         }
 
-        .dark-mode .form-input {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            border: 2px solid var(--secondary);
+        .signup-form {
+            display: none;
+            flex-direction: column;
+            gap: 1.2rem;
+            max-width: 350px;
+            margin: 0 auto 2rem;
         }
 
-        .menu-container, .exams-container, .profile-container, .waiting-container {
+        .signup-form.active {
+            display: flex;
+        }
+
+        .menu-container {
             min-height: 100vh;
             padding: 2rem;
             position: relative;
@@ -493,13 +404,6 @@
             color: var(--primary-dark);
             margin-bottom: 1rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .dark-mode .header h1 {
-            color: #90CAF9;
         }
 
         .page-subtitle {
@@ -510,10 +414,6 @@
             line-height: 1.6;
         }
 
-        .dark-mode .page-subtitle {
-            color: #B0BEC5;
-        }
-
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -522,7 +422,7 @@
             margin: 3rem auto 0;
         }
 
-        .menu-card, .exam-card, .kurs-card {
+        .menu-card {
             background: rgba(255, 255, 255, 0.95);
             border-radius: var(--radius);
             padding: 3rem 2rem;
@@ -546,14 +446,7 @@
             }
         }
 
-        .dark-mode .menu-card, 
-        .dark-mode .exam-card, 
-        .dark-mode .kurs-card {
-            background: rgba(13, 71, 161, 0.95);
-            border: 1px solid rgba(227, 242, 253, 0.2);
-        }
-
-        .menu-card:hover, .exam-card:hover, .kurs-card:hover {
+        .menu-card:hover {
             transform: translateY(-15px) scale(1.05);
             box-shadow: var(--shadow-hover);
         }
@@ -561,7 +454,6 @@
         .menu-card-icon {
             font-size: 5rem;
             margin-bottom: 2rem;
-            filter: drop-shadow(0 6px 12px rgba(33, 150, 243, 0.3));
             transition: var(--transition);
         }
 
@@ -576,21 +468,7 @@
             font-weight: 600;
         }
 
-        .dark-mode .menu-card h2 {
-            color: #90CAF9;
-        }
-
-        .menu-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-            font-size: 1.1rem;
-        }
-
-        .dark-mode .menu-card p {
-            color: var(--light);
-        }
-
-        .back-btn, .back-to-kurs {
+        .back-btn {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: var(--white);
             border: none;
@@ -603,17 +481,20 @@
             gap: 0.8rem;
             box-shadow: var(--shadow);
             font-weight: 600;
-            position: relative;
-            overflow: hidden;
             transition: var(--transition);
         }
 
-        .back-btn:hover, .back-to-kurs:hover {
+        .back-btn:hover {
             transform: translateX(-8px) scale(1.05);
-            box-shadow: 0 12px 30px rgba(33, 150, 243, 0.4);
         }
 
-        .exams-grid, .kurs-submenu {
+        .exams-container {
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .exams-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
@@ -621,190 +502,85 @@
             margin: 3rem auto 0;
         }
 
+        .exam-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+            backdrop-filter: blur(15px);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: cardSlideUp 0.6s ease forwards;
+            transition: var(--transition);
+        }
+
+        .exam-card:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: var(--shadow-hover);
+        }
+
         .kurs-submenu {
             display: none;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
         }
 
         .kurs-submenu.active {
             display: grid;
         }
 
-        .profile-card {
+        .kurs-card {
             background: rgba(255, 255, 255, 0.95);
-            border-radius: var(--radius);
-            padding: 3rem;
-            max-width: 900px;
-            margin: 0 auto;
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
             box-shadow: var(--shadow);
+            cursor: pointer;
             border: 1px solid rgba(33, 150, 243, 0.2);
             backdrop-filter: blur(15px);
             transform: translateY(30px);
             opacity: 0;
-            animation: cardSlideUp 0.8s ease forwards;
-        }
-
-        .dark-mode .profile-card {
-            background: rgba(13, 71, 161, 0.95);
-            border: 1px solid rgba(227, 242, 253, 0.2);
-        }
-
-        .profile-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .profile-avatar {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--white);
-            font-weight: bold;
-            box-shadow: 0 12px 30px rgba(33, 150, 243, 0.4);
-            border: 4px solid var(--white);
-            margin: 0 auto 1.5rem;
-        }
-
-        .profile-info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .info-section {
-            background: rgba(33, 150, 243, 0.1);
-            border-radius: 15px;
-            padding: 1.5rem;
-            border: 1px solid rgba(33, 150, 243, 0.2);
-        }
-
-        .info-section h3 {
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .dark-mode .info-section h3 {
-            color: #90CAF9;
-        }
-
-        .info-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid rgba(33, 150, 243, 0.1);
-            font-size: 1rem;
-        }
-
-        .info-item:last-child {
-            border-bottom: none;
-        }
-
-        .countdown-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: 0 12px 30px rgba(33, 150, 243, 0.3);
-        }
-
-        .countdown-section h3 {
-            color: var(--white);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .countdown-timer {
-            font-family: 'Courier New', monospace;
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--white);
-        }
-
-        .profile-actions {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .profile-action-btn {
-            padding: 1rem 1.8rem;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
+            animation: cardSlideUp 0.6s ease forwards;
             transition: var(--transition);
-            border: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .profile-action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        .kurs-card:hover {
+            transform: translateY(-12px) scale(1.08);
+            box-shadow: var(--shadow-hover);
         }
 
-        .edit-profile-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-        }
-
-        .change-password-btn {
+        .back-to-kurs {
             background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
             color: var(--white);
-        }
-
-        .logout-btn {
-            background: linear-gradient(135deg, var(--danger) 0%, #d32f2f 100%);
-            color: var(--white);
-        }
-
-        .edit-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            margin: 1.5rem 0;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            text-align: right;
-        }
-
-        .form-group label {
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-select {
-            padding: 1rem 1.5rem;
-            font-size: 1rem;
+            border: none;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
-            border: 2px solid var(--primary);
-            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: var(--shadow);
+            font-weight: 600;
             transition: var(--transition);
         }
 
-        .form-select:focus {
-            outline: none;
-            border-color: var(--primary-dark);
-            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
+        .back-to-kurs:hover {
+            transform: translateX(-8px) scale(1.05);
         }
 
-        .dark-mode .form-select {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            border: 2px solid var(--secondary);
+        .waiting-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
         }
 
         .waiting-content {
@@ -821,11 +597,6 @@
             animation: contentSlideUp 0.8s ease;
         }
 
-        .dark-mode .waiting-content {
-            background: rgba(13, 71, 161, 0.95);
-            border: 1px solid rgba(227, 242, 253, 0.2);
-        }
-
         .waiting-icon {
             margin: 2rem 0;
             animation: pulse 2s ease-in-out infinite;
@@ -834,26 +605,6 @@
         @keyframes pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.1); }
-        }
-
-        .waiting-content h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .waiting-content p {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .dark-mode .waiting-content p {
-            color: #B0BEC5;
         }
 
         .toast-container {
@@ -892,55 +643,8 @@
             background: linear-gradient(135deg, var(--danger) 0%, #d32f2f 100%);
         }
 
-        .toast-warning {
-            background: linear-gradient(135deg, var(--warning) 0%, #FF8F00 100%);
-        }
-
         .toast-info {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        @media (max-width: 768px) {
-            .login-content, .waiting-content, .profile-card, .edit-modal-content {
-                padding: 2rem 1.5rem;
-            }
-            .header h1 {
-                font-size: 2.2rem;
-            }
-            .page-subtitle {
-                font-size: 1.1rem;
-            }
-            .menu-grid, .exams-grid, .kurs-submenu {
-                grid-template-columns: 1fr;
-            }
-            .menu-card, .exam-card, .kurs-card {
-                padding: 2rem 1.5rem;
-            }
-            .profile-info-grid {
-                grid-template-columns: 1fr;
-            }
-            .profile-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-            .profile-action-btn {
-                width: 100%;
-                max-width: 250px;
-                justify-content: center;
-            }
-            .header-controls {
-                top: 10px;
-                right: 10px;
-            }
-            .language-selector {
-                top: 10px;
-                left: 10px;
-            }
-            .control-btn {
-                width: 45px;
-                height: 45px;
-                font-size: 1.1rem;
-            }
         }
 
         .page {
@@ -949,6 +653,18 @@
 
         .page.active {
             display: block;
+        }
+
+        @media (max-width: 768px) {
+            .login-content, .waiting-content {
+                padding: 2rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .menu-grid, .exams-grid, .kurs-submenu {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -1009,8 +725,8 @@
     <!-- Phone Modal -->
     <div class="phone-modal" id="phoneModal">
         <div class="phone-modal-content">
-            <h2 id="phoneModalTitle">تفعيل الاشتراك</h2>
-            <p id="phoneModalText">لتفعيل الاشتراك يرجى التواصل على الرقم التالي:</p>
+            <h2>تفعيل الاشتراك</h2>
+            <p>لتفعيل الاشتراك يرجى التواصل على الرقم التالي:</p>
             <div class="phone-number">+212 649-661976</div>
             <button class="close-modal" id="closePhoneModal">إغلاق</button>
         </div>
@@ -1019,8 +735,8 @@
     <!-- Support Modal -->
     <div class="support-modal" id="supportModal">
         <div class="support-modal-content">
-            <h2 id="supportTitle">اتصال الدعم</h2>
-            <p id="supportText">للأسئلة أو المشاكل أو لشراء النسخة الكاملة يرجى الاتصال بـ:</p>
+            <h2>اتصال الدعم</h2>
+            <p>للأسئلة أو المشاكل أو لشراء النسخة الكاملة يرجى الاتصال بـ:</p>
             <div class="support-info">
                 <div class="support-item">
                     <i class="fas fa-phone"></i>
@@ -1035,88 +751,41 @@
         </div>
     </div>
 
-    <!-- Edit Profile Modal -->
-    <div class="edit-modal" id="editModal">
-        <div class="edit-modal-content">
-            <h2 id="editProfileTitle">تعديل الملف الشخصي</h2>
-            <div class="edit-form">
-                <div class="form-group">
-                    <label for="editName">الاسم:</label>
-                    <input type="text" id="editName" class="form-input" placeholder="أدخل اسمك">
-                </div>
-                <div class="form-group">
-                    <label for="editEmail">البريد الإلكتروني:</label>
-                    <input type="email" id="editEmail" class="form-input" placeholder="أدخل بريدك الإلكتروني">
-                </div>
-                <div class="form-group">
-                    <label for="editPhone">الهاتف:</label>
-                    <input type="tel" id="editPhone" class="form-input" placeholder="أدخل رقم هاتفك">
-                </div>
-                <div class="form-group">
-                    <label for="editLocation">المكان:</label>
-                    <input type="text" id="editLocation" class="form-input" placeholder="أدخل مكان إقامتك">
-                </div>
-                <div class="form-group">
-                    <label for="editExamDate">تاريخ الامتحان:</label>
-                    <input type="date" id="editExamDate" class="form-input">
-                </div>
-                <div class="form-group">
-                    <label for="editExamLocation">مكان الامتحان:</label>
-                    <select id="editExamLocation" class="form-select">
-                        <option value="">اختر مدينة الامتحان</option>
-                        <option value="فاس">فاس — Fès</option>
-                        <option value="القنيطرة">القنيطرة — Kénitra</option>
-                        <option value="الرباط">الرباط — Rabat</option>
-                        <option value="مراكش">مراكش — Marrakech</option>
-                        <option value="الدار البيضاء">الدار البيضاء — Casablanca</option>
-                        <option value="طنجة">طنجة — Tanger</option>
-                        <option value="بني ملال">بني ملال — Béni Mellal</option>
-                        <option value="الناظور">الناظور — Nador</option>
-                        <option value="أكادير">أكادير — Agadir</option>
-                    </select>
-                </div>
-            </div>
-            <div class="profile-actions">
-                <button class="profile-action-btn edit-profile-btn" id="saveProfile">
-                    <i class="fas fa-save"></i>
-                    <span>حفظ التغييرات</span>
-                </button>
-                <button class="profile-action-btn change-password-btn" id="changePassword">
-                    <i class="fas fa-key"></i>
-                    <span>تغيير كلمة المرور</span>
-                </button>
-                <button class="profile-action-btn logout-btn" id="cancelEdit">
-                    <i class="fas fa-times"></i>
-                    <span>إلغاء</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Login Page -->
     <div id="loginPage" class="page active">
         <div class="login-container">
             <div class="login-content">
-                <h1 id="loginTitle">TELC B2 Training - نظام المصادقة</h1>
-                <p class="login-subtitle" id="loginSubtitle">سجّل دخولك للبدء في التدريب أو جرّب كضيف</p>
+                <h1>TELC B2 Training - نظام المصادقة</h1>
+                <p class="login-subtitle">سجّل دخولك للبدء في التدريب أو جرّب كضيف</p>
                 
-                <div class="login-form">
+                <div class="login-form" id="loginForm">
                     <input type="email" class="form-input" id="emailInput" placeholder="البريد الإلكتروني">
                     <input type="password" class="form-input" id="passwordInput" placeholder="كلمة المرور">
                     <button class="auth-btn login-btn" id="loginButton">
                         <i class="fas fa-sign-in-alt"></i>
-                        <span id="loginBtnText">تسجيل الدخول</span>
+                        <span>تسجيل الدخول</span>
+                    </button>
+                </div>
+
+                <div class="signup-form" id="signupForm">
+                    <input type="text" class="form-input" id="fullNameInput" placeholder="الاسم الكامل">
+                    <input type="email" class="form-input" id="signupEmailInput" placeholder="البريد الإلكتروني">
+                    <input type="password" class="form-input" id="signupPasswordInput" placeholder="كلمة المرور">
+                    <input type="password" class="form-input" id="confirmPasswordInput" placeholder="تأكيد كلمة المرور">
+                    <button class="auth-btn signup-btn" id="confirmSignupButton">
+                        <i class="fas fa-user-plus"></i>
+                        <span>إنشاء الحساب</span>
                     </button>
                 </div>
 
                 <div class="auth-buttons">
                     <button class="auth-btn signup-btn" id="signupButton">
                         <i class="fas fa-user-plus"></i>
-                        <span id="signupBtnText">إنشاء حساب جديد</span>
+                        <span>إنشاء حساب جديد</span>
                     </button>
                     <button class="auth-btn guest-btn" id="guestButton">
                         <i class="fas fa-user"></i>
-                        <span id="guestBtnText">الدخول كضيف</span>
+                        <span>الدخول كضيف</span>
                     </button>
                 </div>
 
@@ -1132,25 +801,25 @@
     <div id="menuPage" class="page">
         <div class="menu-container">
             <div class="header">
-                <h1 id="menuTitle">TELC B2 Training Portal</h1>
-                <p class="page-subtitle" id="menuSubtitle">اختر مجال تعلمك وابدأ التحضير للاختبار</p>
+                <h1>TELC B2 Training Portal</h1>
+                <p class="page-subtitle">اختر مجال تعلمك وابدأ التحضير للاختبار</p>
                 <button class="back-btn" id="backToLogin">
                     <i class="fas fa-sign-out-alt"></i>
-                    <span id="backToLoginText">تسجيل الخروج</span>
+                    <span>تسجيل الخروج</span>
                 </button>
             </div>
             
             <div class="menu-grid">
                 <div class="menu-card" id="kursCard">
                     <div class="menu-card-icon">📘</div>
-                    <h2 id="kursTitle">KURS</h2>
-                    <p id="kursDescription">الدروس التفاعلية والتدريبات المصنفة حسب المستوى</p>
+                    <h2>KURS</h2>
+                    <p>الدروس التفاعلية والتدريبات المصنفة حسب المستوى</p>
                 </div>
                 
                 <div class="menu-card" id="examsCard">
                     <div class="menu-card-icon">📚</div>
-                    <h2 id="examsTitle">Prüfungen</h2>
-                    <p id="examsDescription">اختبر معرفتك مع تحضيراتنا الشاملة للامتحانات والمحاكاة</p>
+                    <h2>Prüfungen</h2>
+                    <p>اختبر معرفتك مع تحضيراتنا الشاملة للامتحانات والمحاكاة</p>
                 </div>
             </div>
         </div>
@@ -1161,36 +830,36 @@
         <div class="exams-container">
             <button class="back-btn" id="backFromKurs">
                 <i class="fas fa-arrow-right"></i>
-                <span id="backKursText">العودة إلى القائمة الرئيسية</span>
+                <span>العودة إلى القائمة الرئيسية</span>
             </button>
             <div class="header">
-                <h1 id="kursPageTitle">KURS - الدروس</h1>
-                <p class="page-subtitle" id="kursPageSubtitle">اختر نوع التدريب الذي ترغب في البدء به</p>
+                <h1>KURS - الدروس</h1>
+                <p class="page-subtitle">اختر نوع التدريب الذي ترغب في البدء به</p>
             </div>
             
             <div class="kurs-submenu active">
                 <div class="kurs-card" id="lesenCard">
                     <div class="menu-card-icon">📖</div>
-                    <h3 id="lesenTitle">Lesen</h3>
-                    <p id="lesenDescription">تدريبات القراءة والفهم النصي</p>
+                    <h3>Lesen</h3>
+                    <p>تدريبات القراءة والفهم النصي</p>
                 </div>
                 
                 <div class="kurs-card" id="hoerenCard">
                     <div class="menu-card-icon">👂</div>
-                    <h3 id="hoerenTitle">Hören</h3>
-                    <p id="hoerenDescription">تدريبات الاستماع والفهم السمعي</p>
+                    <h3>Hören</h3>
+                    <p>تدريبات الاستماع والفهم السمعي</p>
                 </div>
                 
                 <div class="kurs-card" id="schreibenCard">
                     <div class="menu-card-icon">✍️</div>
-                    <h3 id="schreibenTitle">Schreiben</h3>
-                    <p id="schreibenDescription">تدريبات الكتابة والتعبير الكتابي</p>
+                    <h3>Schreiben</h3>
+                    <p>تدريبات الكتابة والتعبير الكتابي</p>
                 </div>
                 
                 <div class="kurs-card" id="pdfsCard">
                     <div class="menu-card-icon">📄</div>
-                    <h3 id="pdfsTitle">PDFs</h3>
-                    <p id="pdfsDescription">المواد الدراسية بصيغة PDF للتحميل</p>
+                    <h3>PDFs</h3>
+                    <p>المواد الدراسية بصيغة PDF للتحميل</p>
                 </div>
             </div>
         </div>
@@ -1201,11 +870,11 @@
         <div class="exams-container">
             <button class="back-to-kurs" id="backFromLesen">
                 <i class="fas fa-arrow-right"></i>
-                <span id="backLesenText">العودة إلى KURS</span>
+                <span>العودة إلى KURS</span>
             </button>
             <div class="header">
-                <h1 id="lesenPageTitle">Lesen - القراءة</h1>
-                <p class="page-subtitle" id="lesenPageSubtitle">اختر تمرين القراءة الذي ترغب في البدء به</p>
+                <h1>Lesen - القراءة</h1>
+                <p class="page-subtitle">اختر تمرين القراءة الذي ترغب في البدء به</p>
             </div>
             
             <div class="exams-grid" id="lesenGrid">
@@ -1219,11 +888,11 @@
         <div class="exams-container">
             <button class="back-to-kurs" id="backFromHoeren">
                 <i class="fas fa-arrow-right"></i>
-                <span id="backHoerenText">العودة إلى KURS</span>
+                <span>العودة إلى KURS</span>
             </button>
             <div class="header">
-                <h1 id="hoerenPageTitle">Hören - الاستماع</h1>
-                <p class="page-subtitle" id="hoerenPageSubtitle">اختر تمرين الاستماع الذي ترغب في البدء به</p>
+                <h1>Hören - الاستماع</h1>
+                <p class="page-subtitle">اختر تمرين الاستماع الذي ترغب في البدء به</p>
             </div>
             
             <div class="exams-grid" id="hoerenGrid">
@@ -1237,11 +906,11 @@
         <div class="exams-container">
             <button class="back-to-kurs" id="backFromSchreiben">
                 <i class="fas fa-arrow-right"></i>
-                <span id="backSchreibenText">العودة إلى KURS</span>
+                <span>العودة إلى KURS</span>
             </button>
             <div class="header">
-                <h1 id="schreibenPageTitle">Schreiben - الكتابة</h1>
-                <p class="page-subtitle" id="schreibenPageSubtitle">اختر تمرين الكتابة الذي ترغب في البدء به</p>
+                <h1>Schreiben - الكتابة</h1>
+                <p class="page-subtitle">اختر تمرين الكتابة الذي ترغب في البدء به</p>
             </div>
             
             <div class="exams-grid" id="schreibenGrid">
@@ -1255,11 +924,11 @@
         <div class="exams-container">
             <button class="back-to-kurs" id="backFromPdfs">
                 <i class="fas fa-arrow-right"></i>
-                <span id="backPdfsText">العودة إلى KURS</span>
+                <span>العودة إلى KURS</span>
             </button>
             <div class="header">
-                <h1 id="pdfsPageTitle">PDFs - المواد الدراسية</h1>
-                <p class="page-subtitle" id="pdfsPageSubtitle">اختر المادة التي ترغب في تحميلها</p>
+                <h1>PDFs - المواد الدراسية</h1>
+                <p class="page-subtitle">اختر المادة التي ترغب في تحميلها</p>
             </div>
             
             <div class="exams-grid" id="pdfsGrid">
@@ -1273,11 +942,11 @@
         <div class="exams-container">
             <button class="back-btn" id="backFromExams">
                 <i class="fas fa-arrow-right"></i>
-                <span id="backExamsText">العودة إلى القائمة الرئيسية</span>
+                <span>العودة إلى القائمة الرئيسية</span>
             </button>
             <div class="header">
-                <h1 id="examsPageTitle">Prüfungen - الامتحانات</h1>
-                <p class="page-subtitle" id="examsPageSubtitle">اختر الامتحان الذي ترغب في التدرب عليه</p>
+                <h1>Prüfungen - الامتحانات</h1>
+                <p class="page-subtitle">اختر الامتحان الذي ترغب في التدرب عليه</p>
             </div>
             
             <div class="exams-grid" id="examsGrid">
@@ -1286,115 +955,19 @@
         </div>
     </div>
 
-    <!-- Profile Page -->
-    <div id="profilePage" class="page">
-        <div class="profile-container">
-            <button class="back-btn" id="backFromProfile">
-                <i class="fas fa-arrow-right"></i>
-                <span id="backProfileText">العودة إلى القائمة الرئيسية</span>
-            </button>
-            <div class="header">
-                <h1 id="profileTitle">ملفي الشخصي</h1>
-                <p class="page-subtitle" id="profileSubtitle">إدارة بياناتك الشخصية وتتبع تقدمك التعليمي</p>
-            </div>
-            
-            <div class="profile-card">
-                <div class="profile-header">
-                    <div class="profile-avatar" id="userAvatar">ز</div>
-                    <h2 id="userName">زكرياء</h2>
-                    <p id="userLevel">طالب مستوى B2</p>
-                </div>
-                
-                <div class="profile-info-grid">
-                    <div class="info-section">
-                        <h3 id="personalInfoTitle">المعلومات الشخصية</h3>
-                        <div class="info-item">
-                            <span id="nameLabel">الاسم:</span>
-                            <span id="profileName">زكرياء</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="emailLabel">البريد الإلكتروني:</span>
-                            <span id="profileEmail">zakariaap.6@gmail.com</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="phoneLabel">الهاتف:</span>
-                            <span id="profilePhone">+212 649-661976</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="locationLabel">المكان:</span>
-                            <span id="profileLocation">المغرب</span>
-                        </div>
-                    </div>
-                    
-                    <div class="info-section">
-                        <h3 id="examInfoTitle">معلومات الامتحان</h3>
-                        <div class="info-item">
-                            <span id="examDateLabel">تاريخ الامتحان:</span>
-                            <span id="profileExamDate">01/12/2025</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="examLocationLabel">مكان الامتحان:</span>
-                            <span id="profileExamLocation">برلين</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="levelLabel">المستوى:</span>
-                            <span id="profileLevel">B2</span>
-                        </div>
-                    </div>
-                    
-                    <div class="info-section">
-                        <h3 id="statsTitle">الإحصائيات</h3>
-                        <div class="info-item">
-                            <span id="pointsLabel">النقاط:</span>
-                            <span id="profilePoints">150</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="completedLabel">الامتحانات المكتملة:</span>
-                            <span id="profileCompleted">8/20</span>
-                        </div>
-                        <div class="info-item">
-                            <span id="progressLabel">مستوى التقدم:</span>
-                            <span id="profileProgress">65%</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="countdown-section">
-                    <h3 id="examCountdownTitle">الوقت المتبقي حتى الامتحان:</h3>
-                    <div class="countdown-timer" id="examCountdown">30 يوم 00:00:00</div>
-                </div>
-                
-                <div class="profile-actions">
-                    <button class="profile-action-btn edit-profile-btn" id="editProfileBtn">
-                        <i class="fas fa-edit"></i>
-                        <span id="editProfileText">تعديل الملف الشخصي</span>
-                    </button>
-                    <button class="profile-action-btn change-password-btn" id="changePasswordBtn">
-                        <i class="fas fa-key"></i>
-                        <span id="changePasswordText">تغيير كلمة المرور</span>
-                    </button>
-                    <button class="profile-action-btn logout-btn" id="logoutBtn">
-                        <i class="fas fa-sign-out-alt"></i>
-                        <span id="logoutText">تسجيل الخروج</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Waiting Approval Page -->
     <div id="waitingPage" class="page">
         <div class="waiting-container">
             <div class="waiting-content">
-                <h1 id="waitingTitle">بانتظار الموافقة</h1>
-                <p id="waitingText">تم استلام طلب تسجيلك بنجاح! جاري مراجعته من قبل المسؤول</p>
+                <h1>بانتظار الموافقة</h1>
+                <p>تم استلام طلب تسجيلك بنجاح! جاري مراجعته من قبل المسؤول</p>
                 <div class="waiting-icon">
                     <i class="fas fa-clock fa-4x"></i>
                 </div>
-                <p id="waitingSubtext">سيتم إعلامك عبر البريد الإلكتروني عند الموافقة على طلبك</p>
+                <p>سيتم إعلامك عبر البريد الإلكتروني عند الموافقة على طلبك</p>
                 <button class="auth-btn login-btn" id="signOutWaiting">
                     <i class="fas fa-sign-out-alt"></i>
-                    <span id="signOutWaitingText">تسجيل الخروج</span>
+                    <span>تسجيل الخروج</span>
                 </button>
             </div>
         </div>
@@ -1404,86 +977,39 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <script type="module">
-        // تكوين Supabase مع المفاتيح الجديدة
+        // تكوين Supabase الجديد
         const SUPABASE_URL = 'https://gxliuuhgssesdrbwgdui.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4bGl1dWhnc3Nlc2RyYndnZHVpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA0NTQyNTIsImV4cCI6MjA3NjAzMDI1Mn0.gPVliO_yB__XqGBdWHCpr1FdbOtKuQ-1XDA-JoclZNU';
         
         // تهيئة Supabase
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // الترجمات
-        const translations = {
-            ar: {
-                loginTitle: "TELC B2 Training - نظام المصادقة",
-                loginSubtitle: "سجّل دخولك للبدء في التدريب أو جرّب كضيف",
-                loginBtnText: "تسجيل الدخول",
-                signupBtnText: "إنشاء حساب جديد",
-                guestBtnText: "الدخول كضيف",
-                menuTitle: "TELC B2 Training Portal",
-                menuSubtitle: "اختر مجال تعلمك وابدأ التحضير للاختبار",
-                kursTitle: "KURS",
-                kursDescription: "الدروس التفاعلية والتدريبات المصنفة حسب المستوى",
-                examsTitle: "Prüfungen",
-                examsDescription: "اختبر معرفتك مع تحضيراتنا الشاملة للامتحانات والمحاكاة",
-                backToLoginText: "تسجيل الخروج",
-                backKursText: "العودة إلى القائمة الرئيسية",
-                kursPageTitle: "KURS - الدروس",
-                kursPageSubtitle: "اختر نوع التدريب الذي ترغب في البدء به",
-                lesenTitle: "Lesen",
-                lesenDescription: "تدريبات القراءة والفهم النصي",
-                hoerenTitle: "Hören",
-                hoerenDescription: "تدريبات الاستماع والفهم السمعي",
-                schreibenTitle: "Schreiben",
-                schreibenDescription: "تدريبات الكتابة والتعبير الكتابي",
-                pdfsTitle: "PDFs",
-                pdfsDescription: "المواد الدراسية بصيغة PDF للتحميل",
-                backLesenText: "العودة إلى KURS",
-                lesenPageTitle: "Lesen - القراءة",
-                lesenPageSubtitle: "اختر تمرين القراءة الذي ترغب في البدء به",
-                backHoerenText: "العودة إلى KURS",
-                hoerenPageTitle: "Hören - الاستماع",
-                hoerenPageSubtitle: "اختر تمرين الاستماع الذي ترغب في البدء به",
-                backSchreibenText: "العودة إلى KURS",
-                schreibenPageTitle: "Schreiben - الكتابة",
-                schreibenPageSubtitle: "اختر تمرين الكتابة الذي ترغب في البدء به",
-                backPdfsText: "العودة إلى KURS",
-                pdfsPageTitle: "PDFs - المواد الدراسية",
-                pdfsPageSubtitle: "اختر المادة التي ترغب في تحميلها",
-                backExamsText: "العودة إلى القائمة الرئيسية",
-                examsPageTitle: "Prüfungen - الامتحانات",
-                examsPageSubtitle: "اختر الامتحان الذي ترغب في التدرب عليه",
-                backProfileText: "العودة إلى القائمة الرئيسية",
-                profileTitle: "ملفي الشخصي",
-                profileSubtitle: "إدارة بياناتك الشخصية وتتبع تقدمك التعليمي",
-                personalInfoTitle: "المعلومات الشخصية",
-                nameLabel: "الاسم:",
-                emailLabel: "البريد الإلكتروني:",
-                phoneLabel: "الهاتف:",
-                locationLabel: "المكان:",
-                examInfoTitle: "معلومات الامتحان",
-                examDateLabel: "تاريخ الامتحان:",
-                examLocationLabel: "مكان الامتحان:",
-                levelLabel: "المستوى:",
-                statsTitle: "الإحصائيات",
-                pointsLabel: "النقاط:",
-                completedLabel: "الامتحانات المكتملة:",
-                progressLabel: "مستوى التقدم:",
-                examCountdownTitle: "الوقت المتبقي حتى الامتحان:",
-                editProfileText: "تعديل الملف الشخصي",
-                changePasswordText: "تغيير كلمة المرور",
-                logoutText: "تسجيل الخروج",
-                supportTitle: "اتصال الدعم",
-                supportText: "للأسئلة أو المشاكل أو لشراء النسخة الكاملة يرجى الاتصال بـ:",
-                phoneModalTitle: "تفعيل الاشتراك",
-                phoneModalText: "لتفعيل الاشتراك يرجى التواصل على الرقم التالي:",
-                trialBannerText: "النسخة التجريبية - متبقي:",
-                waitingTitle: "بانتظار الموافقة",
-                waitingText: "تم استلام طلب تسجيلك بنجاح! جاري مراجعته من قبل المسؤول",
-                waitingSubtext: "سيتم إعلامك عبر البريد الإلكتروني عند الموافقة على طلبك",
-                signOutWaitingText: "تسجيل الخروج",
-                editProfileTitle: "تعديل الملف الشخصي"
-            }
-        };
+        // قوائم الامتحانات والدروس
+        const themaKompliExams = [
+            "ALBI2A.html", "ALPEN.html", "BATATA.html", "BILDER.html", "BINZIL.html",
+            "GRUND SCHULE.html", "HACHARAT.html", "KELLNER.html", "L9AHWA.html", "LHALWA.html",
+            "LI9A7.html", "LICHT.html", "LIMON.html", "MOBARMIJIN.html", "NA7L.html",
+            "NAMSA.html", "SCHLAFZUG.html", "SPORT IST GESUND.html", "TANZKURZ.html", "TRANPOLIN.html"
+        ];
+
+        const lesenExams = [
+            "AL3AB.html", "ALBI2A.html", "ALPEN.html", "BATATA.html", "BENZIL.html",
+            "BILDER.html", "GELD.html", "GRUNDSCHULE.html", "HACHARAT.html", "HATIF L2ATFAL.html",
+            "INSEL.html", "INTIKHABAT.html", "KELLNER.html", "L7ALWA.html", "L9AHWA.html",
+            "LI9A7.html", "LICHT.html", "LIMON.html", "MOBARMIJIN.html", "MOKHADIRAT.html",
+            "NA7L.html", "NAMSA.html", "SCHLAFZUG.html", "SPORT IST GESUND.html", "TANZKURS.html", "TRAMPOLIN.html"
+        ];
+
+        const hoerenExams = ["HÖREN.html", "HÖREN (1).html"];
+        const schreibenExams = ["SCHREIBEN.html"];
+        const pdfs = [
+            "ALBI2A.pdf", "AL3AB.pdf", "ALPEN.pdf", "BATATA.pdf", "BENZIL.pdf",
+            "BILDER.pdf", "GELD.pdf", "GRUNDSCHULE.pdf", "HACHARAT.pdf", "HATIF L2ATFAL.pdf",
+            "INSEL.pdf", "INTIKHABAT.pdf", "KELLNER.pdf", "L7ALWA.pdf", "L9AHWA.pdf",
+            "LI9A7.pdf", "LICHT.pdf", "LIMON.pdf", "MOBARMIJIN.pdf", "MOKHADIRAT.pdf",
+            "NA7L.pdf", "NAMSA.pdf", "SCHLAFZUG.pdf", "SPORT IST GESUND.pdf", "TANZKURZ.pdf",
+            "TRAMPOLINE.pdf", "hören.pdf", "hören (1).pdf", "Schreiben.pdf"
+        ];
 
         // تهيئة التطبيق
         document.addEventListener('DOMContentLoaded', function() {
@@ -1497,27 +1023,8 @@
                 schreiben: document.getElementById('schreibenPage'),
                 pdfs: document.getElementById('pdfsPage'),
                 exams: document.getElementById('examsPage'),
-                profile: document.getElementById('profilePage'),
                 waiting: document.getElementById('waitingPage')
             };
-
-            // أزرار التنقل
-            const backToLogin = document.getElementById('backToLogin');
-            const backFromKurs = document.getElementById('backFromKurs');
-            const backFromLesen = document.getElementById('backFromLesen');
-            const backFromHoeren = document.getElementById('backFromHoeren');
-            const backFromSchreiben = document.getElementById('backFromSchreiben');
-            const backFromPdfs = document.getElementById('backFromPdfs');
-            const backFromExams = document.getElementById('backFromExams');
-            const backFromProfile = document.getElementById('backFromProfile');
-
-            // أزرار القائمة
-            const kursCard = document.getElementById('kursCard');
-            const examsCard = document.getElementById('examsCard');
-            const lesenCard = document.getElementById('lesenCard');
-            const hoerenCard = document.getElementById('hoerenCard');
-            const schreibenCard = document.getElementById('schreibenCard');
-            const pdfsCard = document.getElementById('pdfsCard');
 
             // عناصر تسجيل الدخول
             const emailInput = document.getElementById('emailInput');
@@ -1525,16 +1032,26 @@
             const loginButton = document.getElementById('loginButton');
             const signupButton = document.getElementById('signupButton');
             const guestButton = document.getElementById('guestButton');
+            const confirmSignupButton = document.getElementById('confirmSignupButton');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+
+            // عناصر التسجيل
+            const fullNameInput = document.getElementById('fullNameInput');
+            const signupEmailInput = document.getElementById('signupEmailInput');
+            const signupPasswordInput = document.getElementById('signupPasswordInput');
+            const confirmPasswordInput = document.getElementById('confirmPasswordInput');
 
             // عناصر التحكم
             const themeToggle = document.getElementById('themeToggle');
             const supportBtn = document.getElementById('supportBtn');
             const profileBtn = document.getElementById('profileBtn');
+            const backToLogin = document.getElementById('backToLogin');
+            const signOutWaiting = document.getElementById('signOutWaiting');
 
             // النماذج المنبثقة
             const phoneModal = document.getElementById('phoneModal');
             const supportModal = document.getElementById('supportModal');
-            const editModal = document.getElementById('editModal');
             const closePhoneModal = document.getElementById('closePhoneModal');
             const closeSupportModal = document.getElementById('closeSupportModal');
             const subscriptionActivation = document.getElementById('subscriptionActivation');
@@ -1548,17 +1065,6 @@
             const trialTimer = document.getElementById('trialTimer');
             const premiumBadge = document.getElementById('premiumBadge');
 
-            // عناصر الملف الشخصي
-            const editProfileBtn = document.getElementById('editProfileBtn');
-            const changePasswordBtn = document.getElementById('changePasswordBtn');
-            const logoutBtn = document.getElementById('logoutBtn');
-            const saveProfile = document.getElementById('saveProfile');
-            const changePassword = document.getElementById('changePassword');
-            const cancelEdit = document.getElementById('cancelEdit');
-
-            // عناصر صفحة الانتظار
-            const signOutWaiting = document.getElementById('signOutWaiting');
-
             // Toast container
             const toastContainer = document.getElementById('toastContainer');
 
@@ -1567,9 +1073,7 @@
             let currentLanguage = 'ar';
             let trialExpiry = new Date();
             let isGuest = false;
-            let examDate = new Date();
-            examDate.setMonth(examDate.getMonth() + 1);
-            
+
             // تحميل وقت انتهاء التجربة من localStorage
             const savedTrialExpiry = localStorage.getItem('trialExpiry');
             if (savedTrialExpiry) {
@@ -1579,15 +1083,7 @@
                 localStorage.setItem('trialExpiry', trialExpiry.toISOString());
             }
 
-            // تحميل تاريخ الامتحان من localStorage
-            const savedExamDate = localStorage.getItem('examDate');
-            if (savedExamDate) {
-                examDate = new Date(savedExamDate);
-            } else {
-                localStorage.setItem('examDate', examDate.toISOString());
-            }
-
-            // وظائف المصادقة - الإصدار الجديد المبسط
+            // وظائف المصادقة - الإصدار المصحح
             async function handleLogin() {
                 const email = emailInput.value.trim();
                 const password = passwordInput.value;
@@ -1624,11 +1120,18 @@
             }
 
             async function handleSignUp() {
-                const email = emailInput.value.trim();
-                const password = passwordInput.value;
+                const fullName = fullNameInput.value.trim();
+                const email = signupEmailInput.value.trim();
+                const password = signupPasswordInput.value;
+                const confirmPassword = confirmPasswordInput.value;
                 
-                if (!email || !password) {
-                    showToast('يرجى إدخال البريد الإلكتروني وكلمة المرور', 'error');
+                if (!fullName || !email || !password || !confirmPassword) {
+                    showToast('يرجى ملء جميع الحقول', 'error');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    showToast('كلمات المرور غير متطابقة', 'error');
                     return;
                 }
                 
@@ -1643,10 +1146,8 @@
                         password,
                         options: {
                             data: {
-                                full_name: email.split('@')[0]
-                            },
-                            // إلغاء تأكيد البريد الإلكتروني
-                            emailRedirectTo: window.location.origin
+                                full_name: fullName
+                            }
                         }
                     });
 
@@ -1656,8 +1157,10 @@
                     showPage('waiting');
                     
                     // تنظيف الحقول
-                    emailInput.value = '';
-                    passwordInput.value = '';
+                    fullNameInput.value = '';
+                    signupEmailInput.value = '';
+                    signupPasswordInput.value = '';
+                    confirmPasswordInput.value = '';
                     
                 } catch (error) {
                     showToast('خطأ في إنشاء الحساب: ' + error.message, 'error');
@@ -1697,11 +1200,12 @@
                 showPage('menu');
             }
 
-            // وظيفة التحقق من صلاحية المستخدم - مبسطة
+            // وظيفة التحقق من صلاحية المستخدم - الإصدار المصحح
             async function checkUserAccess() {
                 if (!currentUser) return false;
                 
                 try {
+                    // التحقق مباشرة من جدول user_permissions
                     const { data, error } = await supabase
                         .from('user_permissions')
                         .select('can_access')
@@ -1714,7 +1218,8 @@
                         return false;
                     }
 
-                    return data.can_access;
+                    // إذا كانت can_access = true، يسمح بالدخول
+                    return data && data.can_access;
 
                 } catch (error) {
                     console.error('Error checking user access:', error);
@@ -1748,78 +1253,10 @@
                 if (pages[pageName]) {
                     pages[pageName].classList.add('active');
                 }
-                
-                updateTexts();
             }
 
             function isTrialExpired() {
                 return new Date() > trialExpiry;
-            }
-
-            // تحديث عداد الامتحان
-            function updateExamCountdown() {
-                const now = new Date();
-                const diff = examDate - now;
-                
-                if (diff <= 0) {
-                    document.getElementById('examCountdown').textContent = "00:00:00";
-                } else {
-                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                    
-                    document.getElementById('examCountdown').textContent = 
-                        `${days} يوم ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                }
-            }
-
-            // تحديث عداد الوقت
-            function updateCountdown() {
-                const now = new Date();
-                const diff = trialExpiry - now;
-                
-                if (diff <= 0) {
-                    trialTimer.textContent = "00:00:00";
-                    trialBanner.classList.add('expired');
-                } else {
-                    const hours = Math.floor(diff / (1000 * 60 * 60));
-                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                    
-                    trialTimer.textContent = 
-                        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                }
-            }
-
-            // تغيير اللغة
-            function changeLanguage(lang) {
-                currentLanguage = lang;
-                updateTexts();
-                localStorage.setItem('language', lang);
-                
-                const langTexts = {
-                    ar: '🇸🇦 العربية',
-                    de: '🇩🇪 Deutsch', 
-                    en: '🇬🇧 English'
-                };
-                langBtn.innerHTML = `<span>${langTexts[lang]}</span>`;
-                
-                document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-                document.documentElement.lang = lang;
-            }
-
-            // تحديث النصوص حسب اللغة
-            function updateTexts() {
-                const t = translations[currentLanguage];
-                if (!t) return;
-                
-                Object.keys(t).forEach(key => {
-                    const element = document.getElementById(key);
-                    if (element) {
-                        element.textContent = t[key];
-                    }
-                });
             }
 
             // عرض Toast
@@ -1830,7 +1267,6 @@
                 const icons = {
                     success: 'fa-check-circle',
                     error: 'fa-exclamation-circle',
-                    warning: 'fa-exclamation-triangle',
                     info: 'fa-info-circle'
                 };
                 
@@ -1855,6 +1291,7 @@
                     if (data.session) {
                         currentUser = data.session.user;
                         
+                        // التحقق من الصلاحية مباشرة
                         const hasAccess = await checkUserAccess();
                         if (hasAccess) {
                             showPage('menu');
@@ -1876,29 +1313,36 @@
             function setupEventListeners() {
                 // تسجيل الدخول والتسجيل
                 loginButton.addEventListener('click', handleLogin);
-                signupButton.addEventListener('click', handleSignUp);
+                signupButton.addEventListener('click', () => {
+                    loginForm.style.display = 'none';
+                    signupForm.classList.add('active');
+                    signupButton.style.display = 'none';
+                });
+                confirmSignupButton.addEventListener('click', handleSignUp);
                 guestButton.addEventListener('click', handleGuestLogin);
                 
                 // التنقل بين الصفحات
                 backToLogin.addEventListener('click', handleSignOut);
-                backFromKurs.addEventListener('click', () => showPage('menu'));
-                backFromLesen.addEventListener('click', () => showPage('kurs'));
-                backFromHoeren.addEventListener('click', () => showPage('kurs'));
-                backFromSchreiben.addEventListener('click', () => showPage('kurs'));
-                backFromPdfs.addEventListener('click', () => showPage('kurs'));
-                backFromExams.addEventListener('click', () => showPage('menu'));
-                backFromProfile.addEventListener('click', () => showPage('menu'));
-                
-                // القائمة الرئيسية
-                kursCard.addEventListener('click', () => showPage('kurs'));
-                examsCard.addEventListener('click', () => showPage('exams'));
-                
-                // القائمة الفرعية لـ KURS
-                lesenCard.addEventListener('click', () => showPage('lesen'));
-                hoerenCard.addEventListener('click', () => showPage('hoeren'));
-                schreibenCard.addEventListener('click', () => showPage('schreiben'));
-                pdfsCard.addEventListener('click', () => showPage('pdfs'));
-                
+                signOutWaiting.addEventListener('click', handleSignOut);
+
+                // التنقل في القوائم
+                document.getElementById('kursCard').addEventListener('click', () => showPage('kurs'));
+                document.getElementById('examsCard').addEventListener('click', () => showPage('exams'));
+                document.getElementById('backFromKurs').addEventListener('click', () => showPage('menu'));
+                document.getElementById('backFromExams').addEventListener('click', () => showPage('menu'));
+
+                // KURS submenu
+                document.getElementById('lesenCard').addEventListener('click', () => showPage('lesen'));
+                document.getElementById('hoerenCard').addEventListener('click', () => showPage('hoeren'));
+                document.getElementById('schreibenCard').addEventListener('click', () => showPage('schreiben'));
+                document.getElementById('pdfsCard').addEventListener('click', () => showPage('pdfs'));
+
+                // Back buttons from submenus
+                document.getElementById('backFromLesen').addEventListener('click', () => showPage('kurs'));
+                document.getElementById('backFromHoeren').addEventListener('click', () => showPage('kurs'));
+                document.getElementById('backFromSchreiben').addEventListener('click', () => showPage('kurs'));
+                document.getElementById('backFromPdfs').addEventListener('click', () => showPage('kurs'));
+
                 // عناصر التحكم
                 themeToggle.addEventListener('click', () => {
                     document.body.classList.toggle('dark-mode');
@@ -1908,15 +1352,6 @@
                 
                 supportBtn.addEventListener('click', () => {
                     supportModal.style.display = 'flex';
-                });
-                
-                profileBtn.addEventListener('click', () => {
-                    showPage('profile');
-                });
-                
-                // زر التاج
-                premiumBadge.addEventListener('click', () => {
-                    showToast('أنت مشترك! شكراً على دعمك 💎', 'info');
                 });
                 
                 // النماذج المنبثقة
@@ -1945,12 +1380,6 @@
                     }
                 });
                 
-                editModal.addEventListener('click', (e) => {
-                    if (e.target === editModal) {
-                        editModal.style.display = 'none';
-                    }
-                });
-                
                 // محدد اللغة
                 langBtn.addEventListener('click', () => {
                     langDropdown.classList.toggle('show');
@@ -1959,7 +1388,11 @@
                 document.querySelectorAll('.lang-option').forEach(option => {
                     option.addEventListener('click', () => {
                         const lang = option.getAttribute('data-lang');
-                        changeLanguage(lang);
+                        currentLanguage = lang;
+                        localStorage.setItem('language', lang);
+                        langBtn.innerHTML = `<span>${option.innerHTML}</span>`;
+                        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+                        document.documentElement.lang = lang;
                         langDropdown.classList.remove('show');
                     });
                 });
@@ -1970,10 +1403,6 @@
                         langDropdown.classList.remove('show');
                     }
                 });
-                
-                // تسجيل الخروج
-                logoutBtn.addEventListener('click', handleSignOut);
-                signOutWaiting.addEventListener('click', handleSignOut);
 
                 // إدخال بالإنتر
                 passwordInput.addEventListener('keypress', (e) => {
@@ -1981,6 +1410,30 @@
                         handleLogin();
                     }
                 });
+
+                signupPasswordInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSignUp();
+                    }
+                });
+            }
+
+            // تحديث عداد الوقت
+            function updateCountdown() {
+                const now = new Date();
+                const diff = trialExpiry - now;
+                
+                if (diff <= 0) {
+                    trialTimer.textContent = "00:00:00";
+                    trialBanner.classList.add('expired');
+                } else {
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    
+                    trialTimer.textContent = 
+                        `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                }
             }
 
             // بدء التطبيق
@@ -1993,16 +1446,16 @@
                 }
                 
                 const savedLanguage = localStorage.getItem('language') || 'ar';
-                changeLanguage(savedLanguage);
+                currentLanguage = savedLanguage;
+                document.documentElement.dir = savedLanguage === 'ar' ? 'rtl' : 'ltr';
+                document.documentElement.lang = savedLanguage;
                 
                 // التحقق من حالة تسجيل الدخول
                 await checkLoginStatus();
                 
                 setupEventListeners();
                 updateCountdown();
-                updateExamCountdown();
                 setInterval(updateCountdown, 1000);
-                setInterval(updateExamCountdown, 1000);
             }
 
             init();
